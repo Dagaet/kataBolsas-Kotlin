@@ -1,8 +1,8 @@
 package dev.kata.bolsas
 
-class Bags {
-    fun execute(): Int
-    {
-        return 0
-    }
+interface Bags {
+    fun add(item: Pair<String, String>):Boolean
+    fun isFull():Boolean
+    fun organizeAlphabetically(): List<Pair<String, String>>
+
 }

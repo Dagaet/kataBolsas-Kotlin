@@ -16,7 +16,7 @@ internal class BagsShould: DescribeSpec( {
     describe("Backpack should"){
         it("Add objects when there's capacity") {
             val backpack = Backpack()
-            val result = backpack.add()
+            val result = backpack.add(Pair("Algo", "Algo"))
             result.shouldBeTrue()
         }
     }
