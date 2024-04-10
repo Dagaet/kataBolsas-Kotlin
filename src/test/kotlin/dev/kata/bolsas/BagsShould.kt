@@ -5,10 +5,14 @@ import io.kotest.matchers.booleans.shouldBeTrue
 
 // Backpack should add objects when there is capacity
 // Backpack should return true when reach max capacity
+// Backpack should notify when is possible to add more elements
+// Backpack notify character when reach max capacity
 // Backpack should organize itself alphabetically when the spell is used
 
 // Bag should add objects when there is capacity
 // Bag should return true when reach max capacity
+// Throw an error when reach max capacity
+// Bag should notify when is possible to add more elements
 // Bag should organize itself alphabetically when the spell is used
 // Bag should return its category when player asks them
 
