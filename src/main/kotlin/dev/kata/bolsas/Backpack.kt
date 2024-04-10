@@ -27,6 +27,5 @@ class Backpack: Bags{
         itemsMutableList.sortBy { it.second }
         itemsList = itemsMutableList.toList()
         return itemsList
-
     }
 }
