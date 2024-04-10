@@ -22,7 +22,7 @@ internal class BagsShould: DescribeSpec( {
         }
         it("return true when reach max capacity"){
             val backpack = Backpack()
-            for (i in 0..8){
+            for (i in 0..7){
                 backpack.add(Pair("Algo", "Algo"))
             }
             val result = backpack.isFull()
