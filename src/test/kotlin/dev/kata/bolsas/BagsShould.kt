@@ -30,7 +30,7 @@ internal class BagsShould: DescribeSpec( {
         }
         it("organize itself alphabetically when the spell is used"){
             val backpack = Backpack()
-            val addItems = backpack.add(
+            backpack.add(
                 Pair("Algo", "Algo"),
                 Pair("Zezeze", "Zezeze"),
                 Pair("Uno", "Dos")

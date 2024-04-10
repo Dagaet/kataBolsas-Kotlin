@@ -23,6 +23,9 @@ class Backpack: Bags{
     }
 
     override fun organizeAlphabetically(): List<Pair<String, String>> {
-        TODO("Not yet implemented")
+       val itemsMutableList = itemsList.toMutableList()
+        itemsMutableList.sortBy { it.second }
+        itemsList = itemsMutableList.toList()
+        return itemsList
     }
 }
