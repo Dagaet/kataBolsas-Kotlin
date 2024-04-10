@@ -28,5 +28,16 @@ internal class BagsShould: DescribeSpec( {
             val result = backpack.isFull()
             result.shouldBeTrue()
         }
+        it("organize itself alphabetically when the spell is used"){
+            val backpack = Backpack()
+            val addItems = backpack.add(
+                Pair("Algo", "Algo"),
+                Pair("Zezeze", "Zezeze"),
+                Pair("Uno", "Dos")
+            )
+            val result = backpack.organizeAlphabetically()
+            val expectedResult : List<Pair<String, String>> = listOf(Pair("Algo", "Algo"), Pair("Uno", "Dos"), Pair("Zezeze", "Zezeze"))
+            result shouldBe expectedResult
+        }
     }
 })
