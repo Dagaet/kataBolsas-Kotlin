@@ -40,4 +40,11 @@ internal class BagsShould: DescribeSpec( {
             result shouldBe expectedResult
         }
     }
+    describe("Bag should"){
+        it("add objects when there is capacity"){
+            val bag = Bag()
+            val result = bag.add(Pair("Algo", "Algo"))
+            result.shouldBeTrue()
+        }
+    }
 })

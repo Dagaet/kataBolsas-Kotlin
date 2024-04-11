@@ -6,6 +6,7 @@ class Backpack: Bags{
 
     override fun add(vararg items: Pair<String, String>): Boolean {
         if (isFull()){
+            println("The item has not been added because it is at maximum capacity")
             return false
         }
         val itemsMutableList = itemsList.toMutableList()
@@ -27,6 +28,5 @@ class Backpack: Bags{
         itemsMutableList.sortBy { it.second }
         itemsList = itemsMutableList.toList()
         return itemsList
-
     }
 }
