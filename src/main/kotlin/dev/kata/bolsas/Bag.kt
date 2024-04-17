@@ -12,6 +12,7 @@ class Bag: Bags{
     }
 
     override fun organizeAlphabetically(): MutableList<Pair<String, String>> {
-        TODO("Not yet implemented")
+        itemsList.sortBy { it.second }
+        return itemsList
     }
 }
