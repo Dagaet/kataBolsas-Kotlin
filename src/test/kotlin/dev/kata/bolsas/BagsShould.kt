@@ -34,13 +34,11 @@ internal class BagsShould: DescribeSpec( {
         }
         it("organize itself alphabetically when the spell is used"){
             val backpack = Backpack()
-            backpack.add(
-                Pair("Algo", "Algo"),
-                Pair("Zezeze", "Zezeze"),
-                Pair("Uno", "Dos")
-            )
+            backpack.add(Pair("Algo", "Algo"))
+            backpack.add(Pair("Zezeze", "Zezeze"))
+            backpack.add(Pair("Uno", "Dos"))
             val result = backpack.organizeAlphabetically()
-            val expectedResult : List<Pair<String, String>> = listOf(Pair("Algo", "Algo"), Pair("Uno", "Dos"), Pair("Zezeze", "Zezeze"))
+            val expectedResult : MutableList<Pair<String, String>> = mutableListOf(Pair("Algo", "Algo"), Pair("Uno", "Dos"), Pair("Zezeze", "Zezeze"))
             result shouldBe expectedResult
         }
     }
