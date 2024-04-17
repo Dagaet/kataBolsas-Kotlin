@@ -48,5 +48,13 @@ internal class BagsShould: DescribeSpec( {
             val result = bag.add(Pair("Algo", "Algo"))
             result.shouldBeTrue()
         }
+        it("return true when reach max capacity"){
+            val bag = Bag()
+            for (i in 0..3){
+                bag.add(Pair("Algo", "Algo"))
+            }
+            val result = bag.isFull()
+            result.shouldBeTrue()
+        }
     }
 })
