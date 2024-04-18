@@ -28,7 +28,7 @@ internal class BagsShould: DescribeSpec( {
             for (i in 0..7){
                 backpack.add("Algo")
             }
-            val result = backpack.isFull()
+            val result = backpack.isFull
             result.shouldBeTrue()
         }
         it("organize itself alphabetically when the spell is used"){
@@ -43,16 +43,16 @@ internal class BagsShould: DescribeSpec( {
     }
     describe("Bag should") {
         it("add an object when there is capacity"){
-            val bag = Bag(Category.Metals)
+            val bag = Bag()
             val result = bag.add("Algo")
             result.shouldBeTrue()
         }
         it("return true when reach max capacity"){
-            val bag = Bag(Category.Herbs)
+            val bag = Bag()
             for (i in 0..3){
                 bag.add("Algo")
             }
-            val result = bag.isFull()
+            val result = bag.isFull
             result.shouldBeTrue()
         }
         it("organize itself alphabetically when the spell is used"){

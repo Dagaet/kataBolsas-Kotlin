@@ -5,7 +5,7 @@ class Backpack: Bags{
     private val itemsList: MutableList<String> = mutableListOf()
 
     override fun add(item: String): Boolean {
-        if (isFull()){
+        if (isFull){
             println("The item has not been added because it is at maximum capacity")
             return false
         }
@@ -15,11 +15,10 @@ class Backpack: Bags{
         return true
     }
 
-    override fun isFull(): Boolean {
-        return itemsList.size == capacity
-    }
+    override val isFull: Boolean
+        get() = itemsList.size == capacity
 
-    override fun organizeAlphabetically(): MutableList<String> {
-        return itemsList.apply { this.sort() }
+    override fun organizeAlphabetically(): List<String> {
+        return itemsList.apply { this.sort() }.toList()
     }
 }

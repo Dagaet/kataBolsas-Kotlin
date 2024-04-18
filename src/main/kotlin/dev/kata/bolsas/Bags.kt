@@ -2,7 +2,7 @@ package dev.kata.bolsas
 
 interface Bags {
     fun add(item: String):Boolean
-    fun isFull():Boolean
-    fun organizeAlphabetically(): MutableList<String>
+    val isFull: Boolean
+    fun organizeAlphabetically(): List<String>
 
 }

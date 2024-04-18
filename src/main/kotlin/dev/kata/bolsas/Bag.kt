@@ -11,7 +11,7 @@ interface Category{
     object Clothes : Category{
         private val elements = listOf("Leather", "Linen", "Silk", "Wool")
         override fun itsMyElement(element : String): Boolean {
-            return elements.find { it == element } != null
+            return elements.contains(element)
         }
     }
     object Herbs : Category {
@@ -32,7 +32,7 @@ interface Category{
         }
     }
 }
-class Bag(private val category: Category = Category.NoCategory): Bags{
+class Bag: Bags{
 
     private val capacity = 4
     private val itemsList: MutableList<String> = mutableListOf()
@@ -40,11 +40,10 @@ class Bag(private val category: Category = Category.NoCategory): Bags{
         return itemsList.add(item)
     }
 
-    override fun isFull(): Boolean {
-        return itemsList.size == capacity
-    }
+    override val isFull: Boolean
+        get() = itemsList.size == capacity
 
-    override fun organizeAlphabetically(): MutableList<String> {
-        return itemsList.apply { this.sort() }
+    override fun organizeAlphabetically(): List<String> {
+        return itemsList.apply { this.sort() }.toList()
     }
 }
