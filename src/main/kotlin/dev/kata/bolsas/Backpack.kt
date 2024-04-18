@@ -2,20 +2,16 @@ package dev.kata.bolsas
 
 class Backpack: Bags{
     private val capacity = 8
-    private var itemsList: List<Pair<String, String>> = listOf()
+    private val itemsList: MutableList<Pair<String, String>> = mutableListOf()
 
-    override fun add(vararg items: Pair<String, String>): Boolean {
+    override fun add(item: Pair<String, String>): Boolean {
         if (isFull()){
             println("The item has not been added because it is at maximum capacity")
             return false
         }
-        val itemsMutableList = itemsList.toMutableList()
-        for (item in items){
-            if(!itemsMutableList.add(item)){
-                return false
-            }
+        if(!itemsList.add(item)){
+            return false
         }
-        itemsList = itemsMutableList.toList()
         return true
     }
 
@@ -23,10 +19,8 @@ class Backpack: Bags{
         return itemsList.size == capacity
     }
 
-    override fun organizeAlphabetically(): List<Pair<String, String>> {
-       val itemsMutableList = itemsList.toMutableList()
-        itemsMutableList.sortBy { it.second }
-        itemsList = itemsMutableList.toList()
+    override fun organizeAlphabetically(): MutableList<Pair<String, String>> {
+        itemsList.sortBy { it.second }
         return itemsList
     }
 }
