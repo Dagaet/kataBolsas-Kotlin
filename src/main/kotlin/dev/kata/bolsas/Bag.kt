@@ -5,25 +5,25 @@ interface Category{
     object Metals : Category{
         private val elements = listOf("Copper", "Gold", "Iron", "Silver")
         override fun itsMyElement(element : String): Boolean {
-            TODO("Not yet implemented")
+            return elements.find { it == element } != null
         }
     }
     object Clothes : Category{
         private val elements = listOf("Leather", "Linen", "Silk", "Wool")
         override fun itsMyElement(element : String): Boolean {
-            TODO("Not yet implemented")
+            return elements.find { it == element } != null
         }
     }
     object Herbs : Category {
         private val elements = listOf("Cherry Blossom", "Marigold", "Rose", "Seaweed")
         override fun itsMyElement(element : String): Boolean {
-            TODO("Not yet implemented")
+            return elements.find { it == element } != null
         }
     }
     object Weapons : Category{
         private val elements = listOf("Axe", "Dagger", "Mace", "Sword")
         override fun itsMyElement(element : String): Boolean {
-            TODO("Not yet implemented")
+            return elements.find { it == element } != null
         }
     }
     object NoCategory : Category{

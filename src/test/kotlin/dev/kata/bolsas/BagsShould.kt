@@ -65,6 +65,20 @@ internal class BagsShould: DescribeSpec( {
             val expectedResult : MutableList<String> = mutableListOf("A", "B", "C", "Z")
             result shouldBe expectedResult
         }
+
+    }
+    describe("Person should"){
+        it("add the elements to the backpack until its full"){
+            val person = Person()
+            person.addElements("Linen")
+            person.addElements("Copper")
+            person.addElements("Gold")
+            person.addElements("Iron")
+            person.addElements("Rose")
+            person.addElements("Sword")
+            person.addElements("Cherry Blossom")
+            person.addElements("Dagger")
+        }
     }
 
 })
