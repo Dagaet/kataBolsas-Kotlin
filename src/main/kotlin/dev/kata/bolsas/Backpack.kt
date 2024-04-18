@@ -2,9 +2,9 @@ package dev.kata.bolsas
 
 class Backpack: Bags{
     private val capacity = 8
-    private val itemsList: MutableList<Pair<String, String>> = mutableListOf()
+    private val itemsList: MutableList<String> = mutableListOf()
 
-    override fun add(item: Pair<String, String>): Boolean {
+    override fun add(item: String): Boolean {
         if (isFull()){
             println("The item has not been added because it is at maximum capacity")
             return false
@@ -19,8 +19,7 @@ class Backpack: Bags{
         return itemsList.size == capacity
     }
 
-    override fun organizeAlphabetically(): MutableList<Pair<String, String>> {
-        itemsList.sortBy { it.second }
-        return itemsList
+    override fun organizeAlphabetically(): MutableList<String> {
+        return itemsList.apply { this.sort() }
     }
 }

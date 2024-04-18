@@ -1,42 +1,42 @@
 package dev.kata.bolsas
 
 interface Category{
-    fun itsMyElement() : Boolean
-    object metals : Category{
+    fun itsMyElement(element : String) : Boolean
+    object Metals : Category{
         private val elements = listOf("Copper", "Gold", "Iron", "Silver")
-        override fun itsMyElement(): Boolean {
+        override fun itsMyElement(element : String): Boolean {
             TODO("Not yet implemented")
         }
     }
-    object clothes : Category{
+    object Clothes : Category{
         private val elements = listOf("Leather", "Linen", "Silk", "Wool")
-        override fun itsMyElement(): Boolean {
+        override fun itsMyElement(element : String): Boolean {
             TODO("Not yet implemented")
         }
     }
-    object herbs : Category {
+    object Herbs : Category {
         private val elements = listOf("Cherry Blossom", "Marigold", "Rose", "Seaweed")
-        override fun itsMyElement(): Boolean {
+        override fun itsMyElement(element : String): Boolean {
             TODO("Not yet implemented")
         }
     }
-    object weapons : Category{
+    object Weapons : Category{
         private val elements = listOf("Axe", "Dagger", "Mace", "Sword")
-        override fun itsMyElement(): Boolean {
+        override fun itsMyElement(element : String): Boolean {
             TODO("Not yet implemented")
         }
     }
-    object noCategory : Category{
-        override fun itsMyElement(): Boolean {
+    object NoCategory : Category{
+        override fun itsMyElement(element : String): Boolean {
             return true
         }
     }
 }
-class Bag(private val category: Category): Bags{
+class Bag(private val category: Category = Category.NoCategory): Bags{
 
     private val capacity = 4
-    private val itemsList: MutableList<Pair<String, String>> = mutableListOf()
-    override fun add(item: Pair<String, String>): Boolean {
+    private val itemsList: MutableList<String> = mutableListOf()
+    override fun add(item: String): Boolean {
         return itemsList.add(item)
     }
 
@@ -44,8 +44,7 @@ class Bag(private val category: Category): Bags{
         return itemsList.size == capacity
     }
 
-    override fun organizeAlphabetically(): MutableList<Pair<String, String>> {
-        itemsList.sortBy { it.second }
-        return itemsList
+    override fun organizeAlphabetically(): MutableList<String> {
+        return itemsList.apply { this.sort() }
     }
 }
