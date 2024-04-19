@@ -2,7 +2,7 @@ package dev.kata.bolsas
 
 class Backpack: Bags{
     val capacity = 8
-    private val itemsList: MutableList<String> = mutableListOf()
+    val itemsList: MutableList<String> = mutableListOf()
 
     override fun add(item: String): Boolean {
         if (isFull){

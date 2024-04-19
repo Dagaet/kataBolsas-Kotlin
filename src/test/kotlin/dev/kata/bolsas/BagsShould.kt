@@ -16,68 +16,39 @@ import io.kotest.matchers.shouldBe
 // Bag should organize itself alphabetically when the spell is used
 // Bag should return its category when player asks them
 
-internal class BagsShould: DescribeSpec( {
-    describe("Backpack should"){
-        it("add objects when there's capacity") {
-            val backpack = Backpack()
-            val result = backpack.add("Algo")
-            result.shouldBeTrue()
-        }
-        it("return true when reach max capacity"){
-            val backpack = Backpack()
-            for (i in 0..7){
-                backpack.add("Algo")
-            }
-            val result = backpack.isFull
-            result.shouldBeTrue()
-        }
-        it("organize itself alphabetically when the spell is used"){
-            val backpack = Backpack()
-            backpack.add("Algo")
-            backpack.add("Zezeze")
-            backpack.add("Uno")
-            val result = backpack.organizeAlphabetically()
-            val expectedResult : MutableList<String> = mutableListOf("Algo", "Uno", "Zezeze")
-            result shouldBe expectedResult
-        }
-    }
-    describe("Bag should") {
-        it("add an object when there is capacity"){
-            val bag = Bag()
-            val result = bag.add("Algo")
-            result.shouldBeTrue()
-        }
-        it("return true when reach max capacity"){
-            val bag = Bag()
-            for (i in 0..3){
-                bag.add("Algo")
-            }
-            val result = bag.isFull
-            result.shouldBeTrue()
-        }
-        it("organize itself alphabetically when the spell is used"){
-            val bag = Bag()
-            bag.add("A")
-            bag.add("Z")
-            bag.add("C")
-            bag.add("B")
-            val result = bag.organizeAlphabetically()
-            val expectedResult : MutableList<String> = mutableListOf("A", "B", "C", "Z")
-            result shouldBe expectedResult
-        }
+// Person should add object in backpack until its full
+// Person should start adding in bag when backpack is full
+// Person should cast a spell to organize bags
 
-    }
+internal class BagsShould: DescribeSpec( {
     describe("Person should"){
-        it("add the elements to the backpack until its full"){
+        it("add object in backpack until its full"){
+            val person = Person()
+            val result = person.addElements("Algo")
+            result.shouldBeTrue()
+        }
+        it("start adding in bag when backpack is full"){
+            val person = Person()
+            for (i in 0..7){
+                person.addElements("Algo")
+            }
+            val result = person.addElements("Algo")
+            result.shouldBeTrue()
+        }
+        it ("cast a spell to organize bags"){
             val person = Person()
             person.addElements("Linen")
-            person.addElements("Copper")
-            person.addElements("Gold")
             person.addElements("Iron")
-            person.addElements("Rose")
-            person.addElements("Sword")
-            person.addElements("Cherry Blossom")
+            person.addElements("Mace")
+            person.addElements("Copper")
             person.addElements("Dagger")
+            person.addElements("Gold")
+            person.addElements("Silver")
+            person.addElements("Silk")
+            person.addElements("Cherry Blossom")
+            val result = person.castSpell()
+            val objet = Person().bags.addAll(mutableListOf(Backpack().itemsList.addAll(), Bag(), Bag(), Bag(), Bag()))
+            result shouldBe
         }
     }
 

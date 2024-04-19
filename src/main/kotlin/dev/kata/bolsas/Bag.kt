@@ -35,7 +35,7 @@ interface Category{
 class Bag: Bags{
 
     private val capacity = 4
-    private val itemsList: MutableList<String> = mutableListOf()
+    val itemsList: MutableList<String> = mutableListOf()
     override fun add(item: String): Boolean {
         return itemsList.add(item)
     }
