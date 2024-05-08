@@ -12,7 +12,8 @@ class Person{
     }
 
     fun castSpell(): List<Bags> {
-        TODO()
+        val itemsElement = this.bags.flatMap { it.itemsList }
+
     }
 
 }
