@@ -46,4 +46,11 @@ class Bag: Bags{
     override fun organizeAlphabetically(): List<String> {
         return itemsList.apply { this.sort() }.toList()
     }
+    override fun addAllItems(vararg elements : String) : Bags {
+        for (element in elements) {
+            itemsList.add(element)
+        }
+        return this
+    }
+
 }
