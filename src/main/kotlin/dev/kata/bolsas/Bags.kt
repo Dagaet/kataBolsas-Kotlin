@@ -6,5 +6,4 @@ interface Bags {
     val itemsList : MutableList<String>
     fun organizeAlphabetically(): List<String>
     fun addAllItems(vararg elements : String): Bags
-
 }

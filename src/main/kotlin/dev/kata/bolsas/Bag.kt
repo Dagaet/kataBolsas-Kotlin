@@ -26,27 +26,34 @@ interface Category{
             return elements.find { it == element } != null
         }
     }
-    object NoCategory : Category{
-        override fun itsMyElement(element : String): Boolean {
-            return true
-        }
-    }
+//    object NoCategory : Category{
+//        override fun itsMyElement(element : String): Boolean {
+//            return true
+//        }
+//    }
 }
-class Bag: Bags{
+class Bag(): Bags{
+    lateinit var bagType: Category
 
-    private val capacity = 4
-    override val itemsList: MutableList<String> = mutableListOf()
+    constructor(category: Category) : this() {
+        changeType(category)
+    }
+    private fun changeType(category: Category){
+        this.bagType = category
+    }
+
+    val capacity = 4
+    override var itemsList: MutableList<String> = mutableListOf()
     override fun add(item: String): Boolean {
         return itemsList.add(item)
     }
-
     override val isFull: Boolean
         get() = itemsList.size == capacity
 
     override fun organizeAlphabetically(): List<String> {
         return itemsList.apply { this.sort() }.toList()
     }
-    override fun addAllItems(vararg elements : String) : Bags {
+    override fun addAllItems(vararg elements : String) : Bag {
         for (element in elements) {
             itemsList.add(element)
         }
