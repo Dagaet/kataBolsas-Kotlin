@@ -27,4 +27,22 @@ class Backpack: Bags{
         }
         return this
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Backpack
+
+        if (capacity != other.capacity) return false
+        if (itemsList != other.itemsList) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = capacity
+        result = 31 * result + itemsList.hashCode()
+        return result
+    }
 }

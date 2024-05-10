@@ -33,8 +33,8 @@ interface Category{
 //    }
 }
 class Bag(): Bags{
-    lateinit var bagType: Category
-
+    var bagType: Category? = null
+    private val capacity = 4
     constructor(category: Category) : this() {
         changeType(category)
     }
@@ -42,7 +42,7 @@ class Bag(): Bags{
         this.bagType = category
     }
 
-    val capacity = 4
+
     override var itemsList: MutableList<String> = mutableListOf()
     override fun add(item: String): Boolean {
         return itemsList.add(item)
@@ -58,6 +58,26 @@ class Bag(): Bags{
             itemsList.add(element)
         }
         return this
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Bag
+
+        if (bagType != other.bagType) return false
+        if (capacity != other.capacity) return false
+        if (itemsList != other.itemsList) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = bagType.hashCode()
+        result = 31 * result + capacity
+        result = 31 * result + itemsList.hashCode()
+        return result
     }
 
 }

@@ -9,7 +9,7 @@ class Person {
 
     fun addElements(element: String): Boolean {
         if (!backpack.isFull) {
-            backpack.add(element)
+            return backpack.add(element)
         }
         bags.forEach {
             if (!it.isFull) {
@@ -21,11 +21,15 @@ class Person {
 
     fun castSpell(): MutableList<Bag> {
         val elements = getElements()
-
         this.bags.forEach { bag -> (
-                bag.apply { bag.itemsList = elements.filter { element -> (
-                    bag.bagType.itsMyElement(element))
-                }.toMutableList() })
+                    if(bag.isInitialized()){
+                        bag.apply {
+                            this.itemsList = elements.filter { element -> (
+                                    bag.bagType.itsMyElement(element)
+                                    )
+                            }.toMutableList() }
+                    }
+                )
              }
         return bags
     }
@@ -34,6 +38,24 @@ class Person {
         val itemsElement = this.bags.flatMap { it.itemsList }.toMutableList()
         itemsElement += backpack.itemsList
         return itemsElement
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Person
+
+        if (backpack != other.backpack) return false
+        if (bags != other.bags) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = backpack.hashCode()
+        result = 31 * result + bags.hashCode()
+        return result
     }
 
 }

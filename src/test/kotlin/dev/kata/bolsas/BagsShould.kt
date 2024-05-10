@@ -46,14 +46,18 @@ internal class BagsShould: DescribeSpec( {
             person.addElements("Silver")
             person.addElements("Silk")
             person.addElements("Cherry Blossom")
-            val result = person.castSpell()
+            person.castSpell()
 
-            val objet = Person().bags.addAll(mutableListOf(
+            val objet = Person()
+            objet.backpack.addAllItems("Linen", "Cherry Blossom")
+            objet.bags.addAll(mutableListOf(
                 Bag(Category.Metals).addAllItems("Cooper", "Gold", "Iron", "Silver"),
                 Bag(),
                 Bag(Category.Weapons).addAllItems("Dagger", "Mace"),
-                Bag()))
-            result shouldBe objet
+                Bag())
+            )
+
+            person shouldBe objet
         }
     }
 
