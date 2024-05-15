@@ -18,7 +18,6 @@ class Person {
         }
         return false
     }
-
     fun castSpell(): MutableList<Bag> {
         val elements = getElements()
         this.bags.forEach { bag -> (
