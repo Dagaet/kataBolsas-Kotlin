@@ -3,6 +3,7 @@ package dev.kata.bolsas
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.equals.shouldBeEqual
+import io.kotest.matchers.shouldBe
 
 // Backpack should add objects when there is capacity
 // Backpack should return true when reach max capacity
@@ -37,19 +38,15 @@ internal class BagsShould: DescribeSpec( {
         }
         it ("cast a spell to organize bags"){
             val person = Person()
-//            person.addElements("Linen")
             person.addElement("Iron")
             person.addElement("Mace")
             person.addElement("Copper")
             person.addElement("Dagger")
             person.addElement("Gold")
             person.addElement("Silver")
-            person.addElement("Silk")
-//            person.addElements("Cherry Blossom")
             person.castSpell()
 
             val person2 = Person()
-//            objet.backpack.addAllItems("Linen", "Cherry Blossom")
             person2.backpack.addAllItems()
             person2.bags.forEach {
                 if (it.bagType != null){
@@ -60,7 +57,7 @@ internal class BagsShould: DescribeSpec( {
                     }
                 }
             }
-            person.bags shouldBeEqual  person2.bags
+            person shouldBeEqual person2
         }
     }
 
