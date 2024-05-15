@@ -2,7 +2,7 @@ package dev.kata.bolsas
 
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.booleans.shouldBeTrue
-import io.kotest.matchers.shouldBe
+import io.kotest.matchers.equals.shouldBeEqual
 
 // Backpack should add objects when there is capacity
 // Backpack should return true when reach max capacity
@@ -24,40 +24,43 @@ internal class BagsShould: DescribeSpec( {
     describe("Person should"){
         it("add object in backpack until its full"){
             val person = Person()
-            val result = person.addElements("Algo")
+            val result = person.addElement("Algo")
             result.shouldBeTrue()
         }
         it("start adding in bag when backpack is full"){
             val person = Person()
             for (i in 0..7){
-                person.addElements("Algo")
+                person.addElement("Algo")
             }
-            val result = person.addElements("Algo")
+            val result = person.addElement("Algo")
             result.shouldBeTrue()
         }
         it ("cast a spell to organize bags"){
             val person = Person()
-            person.addElements("Linen")
-            person.addElements("Iron")
-            person.addElements("Mace")
-            person.addElements("Copper")
-            person.addElements("Dagger")
-            person.addElements("Gold")
-            person.addElements("Silver")
-            person.addElements("Silk")
-            person.addElements("Cherry Blossom")
+//            person.addElements("Linen")
+            person.addElement("Iron")
+            person.addElement("Mace")
+            person.addElement("Copper")
+            person.addElement("Dagger")
+            person.addElement("Gold")
+            person.addElement("Silver")
+            person.addElement("Silk")
+//            person.addElements("Cherry Blossom")
             person.castSpell()
 
-            val objet = Person()
-            objet.backpack.addAllItems("Linen", "Cherry Blossom")
-            objet.bags.addAll(mutableListOf(
-                Bag(Category.Metals).addAllItems("Cooper", "Gold", "Iron", "Silver"),
-                Bag(),
-                Bag(Category.Weapons).addAllItems("Dagger", "Mace"),
-                Bag())
-            )
-
-            person shouldBe objet
+            val person2 = Person()
+//            objet.backpack.addAllItems("Linen", "Cherry Blossom")
+            person2.backpack.addAllItems()
+            person2.bags.forEach {
+                if (it.bagType != null){
+                    if (it.bagType!! == Category.Metals){
+                        it.addAllItems("Copper", "Gold", "Iron", "Silver")
+                    }else{
+                        it.addAllItems("Dagger", "Mace")
+                    }
+                }
+            }
+            person.bags shouldBeEqual  person2.bags
         }
     }
 

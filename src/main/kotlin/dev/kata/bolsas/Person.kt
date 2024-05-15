@@ -2,12 +2,14 @@ package dev.kata.bolsas
 
 class Person {
     val backpack = Backpack()
-
     val bags: MutableList<Bag> = mutableListOf(
-        Bag(Category.Metals), Bag(),
-        Bag(Category.Weapons), Bag())
+        Bag(Category.Metals),
+        Bag(),
+        Bag(Category.Weapons),
+        Bag()
+    )
 
-    fun addElements(element: String): Boolean {
+    fun addElement(element: String): Boolean {
         if (!backpack.isFull) {
             return backpack.add(element)
         }
@@ -21,14 +23,15 @@ class Person {
     fun castSpell(): MutableList<Bag> {
         val elements = getElements()
         this.bags.forEach { bag -> (
-                    if(bag.isInitialized()){
+                    if(bag.bagType != null){
                         bag.apply {
                             this.itemsList = elements.filter { element -> (
-                                    bag.bagType.itsMyElement(element)
+                                    bag.bagType!!.itsMyElement(element)
                                     )
                             }.toMutableList() }
                     }
                 )
+                bag.organizeAlphabetically()
              }
         return bags
     }

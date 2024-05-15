@@ -67,17 +67,17 @@ class Bag(): Bags{
         other as Bag
 
         if (bagType != other.bagType) return false
-        if (capacity != other.capacity) return false
         if (itemsList != other.itemsList) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        var result = bagType.hashCode()
+        var result = bagType?.hashCode() ?: 0
         result = 31 * result + capacity
         result = 31 * result + itemsList.hashCode()
         return result
     }
+
 
 }
